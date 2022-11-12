@@ -1,0 +1,9 @@
+.header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #444;
+  color: white;
+  height: 80px;
+  font-size: 30px;
+}
