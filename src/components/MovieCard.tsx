@@ -4,7 +4,6 @@ interface MovieCardTypes {
   movieData: movieData | undefined;
 }
 function MovieCard(props: MovieCardTypes) {
-  console.log(props.movieData);
   const previewImage =
     props.movieData!.Poster === "N/A"
       ? "https://upload.wikimedia.org/wikipedia/commons/d/dc/No_Preview_image_2.png"

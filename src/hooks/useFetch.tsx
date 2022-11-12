@@ -5,17 +5,17 @@ function useFetch(url: string) {
   const [error, setError] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
   //////////////////////////////////////////////////////////////
-  async function fetchImages(responses: movieData[]) {
-    // console.log(responses);
-    // const IMG_API = `https://img.omdbapi.com/?i=${response.imdbID}&apikey=62f005b3`;
-    const movieImages = await Promise.all(
-      responses.map((response) =>
-        fetch(`https://img.omdbapi.com/?i=${response.imdbID}&apikey=62f005b3`)
-      )
-    ).then((data) => {
-      console.log(data[0]);
-    });
-  }
+  // async function fetchImages(responses: movieData[]) {
+  //   // console.log(responses);
+  //   // const IMG_API = `https://img.omdbapi.com/?i=${response.imdbID}&apikey=62f005b3`;
+  //   const movieImages = await Promise.all(
+  //     responses.map((response) =>
+  //       fetch(`https://img.omdbapi.com/?i=${response.imdbID}&apikey=62f005b3`)
+  //     )
+  //   ).then((data) => {
+  //     console.log(data[0]);
+  //   });
+  // }
   //////////////////////////////////////////////////////////////
   useEffect(() => {
     async function fetchMovies() {

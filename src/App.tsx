@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Movies from "./components/Movies";
 import SearchForm from "./components/SearchForm";
+import Loading from "./components/utilities/Loading";
 import useFetch from "./hooks/useFetch";
 
 function App() {
@@ -13,20 +14,22 @@ function App() {
     // "http://www.omdbapi.com/?i=tt3896198&apikey=wrong" // a single movie
     URL_TO_FETCH
   ) as [movieData[] | undefined, string | undefined, boolean];
+  const renderedComponent = loading ? (
+    <Loading />
+  ) : error ? (
+    <div>{error}</div>
+  ) : (
+    <Movies fetchedMoviesData={data} />
+  );
 
   function searchChangeHandler(text: string) {
     setSearchText(text);
   }
-  // console.log(data, error, loading);
   return (
     <div className="App">
       <Header />
       <SearchForm searchChangeHandler={searchChangeHandler} />
-      {loading ? (
-        <div style={{ fontSize: "20px" }}>loading</div>
-      ) : (
-        <Movies fetchedMoviesData={data} />
-      )}
+      {renderedComponent}
     </div>
   );
 }

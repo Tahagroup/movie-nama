@@ -6,7 +6,7 @@
   text-align: center;
   height: 400px;
   position: relative;
-  width: 18%;
+  width: 250px;
 }
 .card::before {
   content: "";
@@ -23,12 +23,21 @@
   /* bottom: 0; */
   /* z-index: 2; */
 }
+.card:hover {
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 255) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
 .image {
   display: block;
   height: 100%;
   width: 100%;
   border-radius: 10px;
 }
+
 .flex-wrapper {
   position: absolute;
   display: flex;
@@ -43,6 +52,7 @@
 }
 .title {
   color: white;
+  padding: 10px;
 }
 .year {
   color: white;
