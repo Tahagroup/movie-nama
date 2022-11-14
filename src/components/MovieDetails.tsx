@@ -1,24 +1,24 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Loading from "./utilities/Loading";
+import "./MovieDetails.css";
 function MovieDetails() {
   const { imdbID } = useParams();
   const [detailsData, error, loading] = useFetch(
     `http://www.omdbapi.com/?i=${imdbID}&apikey=62f005b3`
   ) as [any, Error, boolean];
-  console.log(detailsData, error, loading);
+  // console.log(detailsData, error, loading);
 
   return (
     <div>
-      {error ? "" : <div>{error}</div>}
+      {error && <div>{error.message}</div>}
       {loading ? (
         <Loading />
       ) : (
-        <>
+        <div className="movieDetails-wrapper">
           <img src={detailsData.Poster} alt="" className="movie-pic" />
           <div className="movie-desc">{detailsData.Title}</div>
-        </>
+        </div>
       )}
     </div>
   );

@@ -24,12 +24,13 @@
   background-color: #333;
   border: none;
   color: beige;
-  padding: 16.7px;
+  padding: 14px;
   padding-left: 30px;
   padding-right: 30px;
   border-radius: 10px;
   cursor: pointer;
   font-family: Rubik;
+  font-size: 20px;
 }
 .form__searchbtn:hover {
   background-color: #222;

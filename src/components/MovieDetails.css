@@ -1,0 +1,10 @@
+.movieDetails-wrapper {
+  display: flex;
+}
+.movie-pic {
+  height: 100%;
+  width: auto;
+}
+.movie-desc {
+  margin: 20px;
+}

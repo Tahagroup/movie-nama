@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useNavigate } from "react-router";
 import "./SearchForm.css";
 interface SearchFormPropsType {
   searchChangeHandler: (text: string, type: string, year: string) => void;
@@ -7,8 +8,12 @@ function SearchForm(props: SearchFormPropsType) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const typeRef = useRef<HTMLSelectElement | null>(null);
   const yearRef = useRef<HTMLInputElement | null>(null);
+  const navigate = useNavigate();
+
   function searchHandler(e: React.SyntheticEvent) {
     e.preventDefault();
+
+    navigate("/");
     const value = inputRef.current!.value.trim();
     const type = typeRef.current!.value.trim();
     const year = yearRef.current!.value.trim();
