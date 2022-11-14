@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
 
 function useFetch(url: string) {
-  const [data, setData] = useState<movieData[] | undefined>(undefined);
+  const [data, setData] = useState<movieData[] | undefined>([
+    {
+      Poster: "N/A",
+      Title: "Loading",
+      Type: "string",
+      Year: "Loading",
+      imdbID: "Loading",
+    },
+  ]);
+  // const [data, setData] = useState<movieData[] | undefined>(undefined);
   const [error, setError] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(false);
   //////////////////////////////////////////////////////////////
-  // async function fetchImages(responses: movieData[]) {
-  //   // console.log(responses);
-  //   // const IMG_API = `https://img.omdbapi.com/?i=${response.imdbID}&apikey=62f005b3`;
-  //   const movieImages = await Promise.all(
-  //     responses.map((response) =>
-  //       fetch(`https://img.omdbapi.com/?i=${response.imdbID}&apikey=62f005b3`)
-  //     )
-  //   ).then((data) => {
-  //     console.log(data[0]);
-  //   });
-  // }
+
   //////////////////////////////////////////////////////////////
   useEffect(() => {
     async function fetchMovies() {
@@ -27,6 +26,7 @@ function useFetch(url: string) {
           throw new Error("Response was not OK!");
         }
         const movies = response.json();
+
         return movies;
       } catch (error) {
         setError(error as string);
@@ -39,8 +39,9 @@ function useFetch(url: string) {
         if (response.Response === "False") {
           throw new Error(response.Error);
         }
+        console.log(response);
 
-        setData(response.Search);
+        setData(response);
         // fetchImages(response.Search);
       })
       .catch((error) => {

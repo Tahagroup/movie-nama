@@ -5,3 +5,9 @@ interface movieData {
   Year: string;
   imdbID: string;
 }
+
+interface searchParameters {
+  text: string;
+  type: string;
+  year: string;
+}

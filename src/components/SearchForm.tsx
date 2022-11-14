@@ -1,14 +1,22 @@
 import React, { useRef } from "react";
 import "./SearchForm.css";
 interface SearchFormPropsType {
-  searchChangeHandler: (text: string) => void;
+  searchChangeHandler: (text: string, type: string, year: string) => void;
 }
 function SearchForm(props: SearchFormPropsType) {
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const typeRef = useRef<HTMLSelectElement | null>(null);
+  const yearRef = useRef<HTMLInputElement | null>(null);
   function searchHandler(e: React.SyntheticEvent) {
     e.preventDefault();
-    const value = inputRef.current!.value;
-    props.searchChangeHandler(value);
+    const value = inputRef.current!.value.trim();
+    const type = typeRef.current!.value.trim();
+    const year = yearRef.current!.value.trim();
+
+    if (!value) {
+      return;
+    }
+    props.searchChangeHandler(value, type, year);
   }
 
   return (
@@ -19,8 +27,33 @@ function SearchForm(props: SearchFormPropsType) {
           type={"text"}
           ref={inputRef}
           defaultValue="batman"
-          placeholder="Enter name of the movie"
+          placeholder="Title"
         />
+        {/* ////////////////////////////////////// */}
+        <div className="type-container">
+          <select className="type-selector" ref={typeRef}>
+            <option className="type-option" value="all">
+              All
+            </option>
+            <option className="type-option" value="movie">
+              Movies
+            </option>
+            <option className="type-option" value="series">
+              Series
+            </option>
+          </select>
+        </div>
+        {/* ////////////////////////////////////// */}
+        <input
+          className="form-year"
+          type={"number"}
+          ref={yearRef}
+          min="1950"
+          max="2030"
+          defaultValue=""
+          placeholder="Year"
+        />
+        {/* ////////////////////////////////////// */}
         <button type="submit" className="form__searchbtn">
           Search
         </button>

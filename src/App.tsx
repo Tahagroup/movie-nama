@@ -1,35 +1,52 @@
 import React, { useState } from "react";
 import "./App.css";
+import { Route, Routes } from "react-router-dom";
+
 import Header from "./components/Header";
 import Movies from "./components/Movies";
 import SearchForm from "./components/SearchForm";
 import Loading from "./components/utilities/Loading";
 import useFetch from "./hooks/useFetch";
+import MovieDetails from "./components/MovieDetails";
 
 function App() {
-  const [searchText, setSearchText] = useState<string>("batman");
+  const [searchParams, setSearchParams] = useState<searchParameters>({
+    text: "batman",
+    type: "all",
+    year: "",
+  });
 
-  const URL_TO_FETCH = `https://www.omdbapi.com/?s=${searchText}&apikey=62f005b3`;
-  const [data, error, loading] = useFetch(
-    // "http://www.omdbapi.com/?i=tt3896198&apikey=wrong" // a single movie
-    URL_TO_FETCH
-  ) as [movieData[] | undefined, string | undefined, boolean];
+  let URL_TO_FETCH = `https://www.omdbapi.com/?s=${searchParams.text}&y=${searchParams.year}&apikey=62f005b3`;
+  if (searchParams.type !== "all") {
+    URL_TO_FETCH = `https://www.omdbapi.com/?s=${searchParams.text}&type=${searchParams.type}&y=${searchParams.year}&apikey=62f005b3`;
+  }
+
+  const [data, error, loading = true] = useFetch(URL_TO_FETCH) as [
+    { Search: movieData[] } | undefined,
+    Error,
+    boolean
+  ];
+  console.log(data);
+
   const renderedComponent = loading ? (
     <Loading />
   ) : error ? (
-    <div>{error}</div>
+    <div>{error.message}</div>
   ) : (
-    <Movies fetchedMoviesData={data} />
+    <Movies fetchedMoviesData={data!.Search} />
   );
 
-  function searchChangeHandler(text: string) {
-    setSearchText(text);
+  function searchChangeHandler(text: string, type: string, year: string) {
+    setSearchParams({ text, type, year });
   }
   return (
     <div className="App">
       <Header />
       <SearchForm searchChangeHandler={searchChangeHandler} />
-      {renderedComponent}
+      <Routes>
+        <Route path="/" element={renderedComponent}></Route>
+        <Route path=":imdbID" element={<MovieDetails />} />
+      </Routes>
     </div>
   );
 }
