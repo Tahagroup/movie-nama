@@ -1,11 +1,11 @@
 .card {
   display: flex;
   align-items: flex-end;
+  position: relative;
   box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   text-align: center;
   height: 400px;
-  position: relative;
   width: 250px;
 }
 .card::before {
@@ -56,4 +56,14 @@
 }
 .year {
   color: white;
+}
+.type {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 1px 4px 1px 4px;
+  background-color: bisque;
+  color: black;
+  opacity: 0.7;
+  border-radius: 5px;
 }

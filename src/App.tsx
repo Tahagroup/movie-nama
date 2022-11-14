@@ -8,6 +8,7 @@ import SearchForm from "./components/SearchForm";
 import Loading from "./components/utilities/Loading";
 import useFetch from "./hooks/useFetch";
 import MovieDetails from "./components/MovieDetails";
+import Error from "./components/utilities/Error";
 
 function App() {
   const [searchParams, setSearchParams] = useState<searchParameters>({
@@ -26,14 +27,14 @@ function App() {
     Error,
     boolean
   ];
-  console.log(data);
+  // console.log(data, error, loading);
 
   const renderedComponent = loading ? (
     <Loading />
   ) : error ? (
     <div>{error.message}</div>
   ) : (
-    <Movies fetchedMoviesData={data!.Search} />
+    <Movies fetchedMoviesData={data!.Search} searchParams={searchParams} />
   );
 
   function searchChangeHandler(text: string, type: string, year: string) {

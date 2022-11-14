@@ -2,17 +2,17 @@ import { useEffect, useState } from "react";
 
 function useFetch(url: string) {
   const [data, setData] = useState<movieData[] | undefined>([
-    {
-      Poster: "N/A",
-      Title: "Loading",
-      Type: "string",
-      Year: "Loading",
-      imdbID: "Loading",
-    },
+    // {
+    //   Poster: "N/A",
+    //   Title: "Loading",
+    //   Type: "string",
+    //   Year: "Loading",
+    //   imdbID: "Loading",
+    // },
   ]);
   // const [data, setData] = useState<movieData[] | undefined>(undefined);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   //////////////////////////////////////////////////////////////
 
   //////////////////////////////////////////////////////////////
@@ -42,7 +42,6 @@ function useFetch(url: string) {
         console.log(response);
 
         setData(response);
-        // fetchImages(response.Search);
       })
       .catch((error) => {
         setError(error);

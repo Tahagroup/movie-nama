@@ -2,7 +2,12 @@ import React from "react";
 
 function Loading() {
   const flexWrapper = {
-    marginTop: "200px",
+    display: "flex",
+    marginTop: "170px",
+    marginLeft: "auto",
+    marginRight: "auto",
+    height: "100px",
+    width: "100px",
   };
   return (
     <div style={flexWrapper}>
