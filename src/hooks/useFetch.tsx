@@ -1,46 +1,39 @@
 import { useEffect, useState } from "react";
 
 function useFetch(url: string) {
-  const [data, setData] = useState<movieData[] | undefined>([
-    // {
-    //   Poster: "N/A",
-    //   Title: "Loading",
-    //   Type: "string",
-    //   Year: "Loading",
-    //   imdbID: "Loading",
-    // },
-  ]);
+  const [data, setData] = useState<movieData[] | undefined>();
   // const [data, setData] = useState<movieData[] | undefined>(undefined);
   const [error, setError] = useState<string | undefined>(undefined);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [isLoading, setisLoading] = useState<boolean>(true);
   //////////////////////////////////////////////////////////////
 
   //////////////////////////////////////////////////////////////
   useEffect(() => {
     async function fetchMovies() {
       try {
-        setLoading(true);
+        setisLoading(true);
         const response = await fetch(url);
         // problems with server/URL. bad HTTP response
         if (!response.ok) {
           throw new Error("Response was not OK!");
         }
         const movies = response.json();
-
         return movies;
       } catch (error) {
         setError(error as string);
-      } finally {
-        setLoading(false);
       }
     }
     fetchMovies()
       .then((response) => {
+        setisLoading(false);
+
         if (response.Response === "False") {
           throw new Error(response.Error);
         }
-        console.log(response);
 
+        // console.log(response);
+
+        setError(undefined);
         setData(response);
       })
       .catch((error) => {
@@ -49,7 +42,7 @@ function useFetch(url: string) {
       });
   }, [url]);
 
-  return [data, error, loading];
+  return [data, error, isLoading];
 }
 
 export default useFetch;

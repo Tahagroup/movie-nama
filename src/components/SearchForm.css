@@ -16,6 +16,7 @@
   padding: 8px;
   font-size: 25px;
   margin-right: 10px;
+  font-family: Rubik;
 }
 
 .form__searchbtn {
@@ -23,8 +24,12 @@
   background-color: #333;
   border: none;
   color: beige;
-  padding: 13.5px;
+  padding: 16.7px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 10px;
   cursor: pointer;
+  font-family: Rubik;
 }
 .form__searchbtn:hover {
   background-color: #222;
@@ -36,6 +41,7 @@
 .type-selector {
   padding: 11.6px;
   font-size: 20px;
+  font-family: Rubik;
 }
 .type-option {
   font-size: 20px;
@@ -47,4 +53,5 @@
   padding: 8px;
   font-size: 25px;
   margin-right: 10px;
+  font-family: Rubik;
 }

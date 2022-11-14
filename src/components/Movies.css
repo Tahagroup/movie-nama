@@ -6,3 +6,30 @@
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
+.pagination-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  gap: 20px;
+}
+
+.prev-btn,
+.next-btn {
+  background-color: yellow;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.prev-btn:hover,
+.next-btn:hover {
+  background-color: orange;
+}
+.prev-btn:disabled,
+.next-btn:disabled {
+  background-color: #fae5ca;
+  cursor: not-allowed;
+}

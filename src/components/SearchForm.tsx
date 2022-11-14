@@ -48,7 +48,7 @@ function SearchForm(props: SearchFormPropsType) {
           className="form-year"
           type={"number"}
           ref={yearRef}
-          min="1950"
+          min="1850"
           max="2030"
           defaultValue=""
           placeholder="Year"
