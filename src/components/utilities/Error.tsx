@@ -1,10 +1,15 @@
 import React from "react";
 import "./Error.css";
 interface ErrorPropsType {
-  isShown: boolean;
+  error: Error;
 }
 function Error(props: ErrorPropsType) {
-  return <div className="error-pic">Error pic should be here</div>;
+  return (
+    <div className="error-container">
+      <img src="./error.png" alt="Error!" className="error-pic" />
+      <div className="error-message">{props.error.message}</div>
+    </div>
+  );
 }
 
 export default Error;

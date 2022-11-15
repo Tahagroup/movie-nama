@@ -2,6 +2,7 @@ import React from "react";
 import useFetch from "../hooks/useFetch";
 import MovieCard from "./MovieCard";
 import "./Movies.css";
+import Error from "./utilities/Error";
 import Loading from "./utilities/Loading";
 interface MoviespropTypes {
   searchParams: searchParameters;
@@ -41,7 +42,7 @@ function Movies(props: MoviespropTypes) {
         {isloading ? (
           <Loading />
         ) : error ? (
-          <div>{error.message}</div>
+          <Error error={error} />
         ) : (
           <>
             {data!.Search.map((movie, index) => (

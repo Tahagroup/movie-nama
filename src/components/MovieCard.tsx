@@ -8,7 +8,7 @@ interface MovieCardTypes {
 function MovieCard(props: MovieCardTypes) {
   const previewImage =
     props.movieData!.Poster === "N/A"
-      ? "https://upload.wikimedia.org/wikipedia/commons/d/dc/No_Preview_image_2.png"
+      ? "./no-image.png"
       : props.movieData!.Poster;
   return (
     <Link to={`/${props.movieData!.imdbID}`}>

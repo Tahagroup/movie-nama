@@ -17,16 +17,17 @@
 
 .prev-btn,
 .next-btn {
-  background-color: yellow;
+  background-color: orange;
   border: none;
   padding: 10px;
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s ease;
+  font-family: rubik, sans-serif;
 }
 .prev-btn:hover,
 .next-btn:hover {
-  background-color: orange;
+  background-color: chartreuse;
 }
 .prev-btn:disabled,
 .next-btn:disabled {

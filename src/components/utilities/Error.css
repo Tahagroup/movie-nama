@@ -1,16 +1,18 @@
-.snackbar-container {
-  background-color: orange;
-  width: 300px;
-  height: 50px;
-  border-radius: 10px;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  bottom: -1000px;
-}
-.active {
+.error-container {
   display: flex;
+  gap: 60px;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(252, 218, 178);
+  padding: 20px;
+  border-radius: 10px;
+}
+.error-pic {
+  height: 120px;
 }
 .error-message {
+  color: #444;
+  font-size: 20px;
   text-align: center;
+  margin-right: 30px;
 }
