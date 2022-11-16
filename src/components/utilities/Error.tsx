@@ -1,5 +1,4 @@
 import React from "react";
-import "./Error.css";
 interface ErrorPropsType {
   error: Error;
 }

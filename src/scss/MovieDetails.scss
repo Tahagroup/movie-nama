@@ -1,0 +1,95 @@
+.details-page {
+  // position: relative;
+
+  .details-bg {
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    filter: blur(8px);
+    width: 100%;
+    height: 100%;
+    transform: scale(1.08);
+  }
+  .details-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+    .details-wrapper {
+      color: #444;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      // align-items: center;
+      background-color: rgba(245, 245, 220, 0.7);
+      padding: 24px;
+      min-width: 600px;
+      .movie-pic {
+        height: 100%;
+        width: auto;
+        border-radius: 10px;
+      }
+      .movie-info {
+        margin: 20px;
+        text-align: left;
+        .movie-title {
+          font-size: 20px;
+          color: darkblue;
+          max-width: 500px;
+          margin-bottom: 10px;
+        }
+        .director {
+          margin-bottom: 10px;
+        }
+        .genre {
+          margin-bottom: 10px;
+        }
+        .summary {
+          margin-bottom: 10px;
+          table,
+          th,
+          td {
+            border: 1px solid black;
+          }
+          th,
+          td {
+            padding: 5px;
+          }
+        }
+        .ratings {
+          margin-top: 30px;
+          .rate-item-wrapper {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            // .rate-item {
+            &:first-child {
+              // flex-direction: row-reverse;
+              .rate-source {
+                // visibility: hidden;
+                color: transparent;
+                line-height: 0;
+                &::after {
+                  margin-left: -75px;
+                  color: #444;
+                  line-height: initial;
+                  content: "IMDB";
+                  visibility: visible;
+                  background-color: orange;
+                  border-radius: 5px;
+                  padding: 2px 4px 2px 4px;
+                }
+              }
+            }
+            // .rate-value {
+            //   margin-right: 200px;
+            // }
+            // }
+          }
+        }
+      }
+    }
+  }
+}

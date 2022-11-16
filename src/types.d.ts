@@ -11,3 +11,8 @@ interface searchParameters {
   type: string;
   year: string;
 }
+
+interface rate {
+  Source: string;
+  Value: string;
+}

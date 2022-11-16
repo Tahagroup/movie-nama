@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router";
-import "./SearchForm.css";
 interface SearchFormPropsType {
   searchChangeHandler: (text: string, type: string, year: string) => void;
 }

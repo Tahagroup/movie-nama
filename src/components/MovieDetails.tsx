@@ -1,23 +1,74 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import Error from "./utilities/Error";
 import Loading from "./utilities/Loading";
-import "./MovieDetails.css";
 function MovieDetails() {
   const { imdbID } = useParams();
   const [detailsData, error, loading] = useFetch(
-    `http://www.omdbapi.com/?i=${imdbID}&apikey=62f005b3`
+    `https://www.omdbapi.com/?i=${imdbID}&apikey=62f005b3`
   ) as [any, Error, boolean];
+  const previewImage =
+    !detailsData || detailsData.Poster === "N/A"
+      ? "./no-image.png"
+      : detailsData.Poster;
   // console.log(detailsData, error, loading);
 
+  // console.log(!detailsData || detailsData.Ratings);
+
+  const rating =
+    detailsData === undefined || detailsData.Ratings.length === 0
+      ? ""
+      : detailsData.Ratings.map((rating: rate) => (
+          <div className="rate-item-wrapper" key={Math.random()}>
+            <span className="rate-source">{rating.Source}:</span>
+            <span className="rate-value">{rating.Value}</span>
+          </div>
+        ));
   return (
     <div>
-      {error && <div>{error.message}</div>}
       {loading ? (
         <Loading />
+      ) : error ? (
+        <Error error={error} />
       ) : (
-        <div className="movieDetails-wrapper">
-          <img src={detailsData.Poster} alt="" className="movie-pic" />
-          <div className="movie-desc">{detailsData.Title}</div>
+        <div className="details-page">
+          <img className="details-bg" src={previewImage} alt=""></img>
+          <div className="details-container">
+            <div className="details-wrapper">
+              <img className="movie-pic" src={previewImage} alt="" />
+              <div className="movie-info">
+                <div className="movie-title">{detailsData.Title}</div>
+                <div className="director">
+                  Director:{" "}
+                  {detailsData.Director === "N/A" ? "-" : detailsData.Director}
+                </div>
+                <div className="genre">Genre: {detailsData.Genre}</div>
+                <div className="summary">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Country</th>
+                        <th>Language</th>
+                        <th>PG</th>
+                        <th>Duration</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>{detailsData.Country}</td>
+                        <td>{detailsData.Language}</td>
+                        <td>{detailsData.Rated}</td>
+                        <td>{detailsData.Runtime}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  {/* {detailsData.Country} | {detailsData.Language} |{" "}
+                  {detailsData.Rated} | {detailsData.Runtime} */}
+                </div>
+                <div className="ratings">{rating}</div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

@@ -1,7 +1,6 @@
 import React from "react";
 import useFetch from "../hooks/useFetch";
 import MovieCard from "./MovieCard";
-import "./Movies.css";
 import Error from "./utilities/Error";
 import Loading from "./utilities/Loading";
 interface MoviespropTypes {
