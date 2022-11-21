@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import "./App.css";
 import "./scss/styles.ts";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
-import Header from "./components/Header";
 import Movies from "./components/Movies";
 import SearchForm from "./components/SearchForm";
 import MovieDetails from "./components/MovieDetails";
+import LandingPage from "./components/LandingPage";
 
 function App() {
   const [searchParams, setSearchParams] = useState<searchParameters>({
@@ -15,29 +15,38 @@ function App() {
     type: "all",
     year: "",
   });
-  const [pageNumber, setpageNumber] = useState(1);
+  const navigate = useNavigate();
 
-  function pageChangeHandler(page: number) {
-    setpageNumber(page);
-  }
   function searchChangeHandler(text: string, type: string, year: string) {
     setSearchParams({ text, type, year });
-    setpageNumber(1);
+    navigate(
+      `/search${"?t=" + text}${"&type=" + type}${
+        year && "&y=" + year
+      }${"&page=1"}`
+    );
   }
 
   return (
     <div className="App">
-      <Header />
-      <SearchForm searchChangeHandler={searchChangeHandler} />
       <Routes>
         <Route
           path="/"
+          element={<LandingPage searchChangeHandler={searchChangeHandler} />}
+        />
+        <Route
+          path="/search"
           element={
-            <Movies
-              searchParams={searchParams}
-              pageNumber={pageNumber}
-              pageChangeHandler={pageChangeHandler}
-            />
+            <>
+              <SearchForm
+                searchChangeHandler={searchChangeHandler}
+                // searchParams={searchParams}
+              />
+              <Movies
+                searchParams={searchParams}
+                // pageNumber={pageNumber}
+                // pageChangeHandler={pageChangeHandler}
+              />
+            </>
           }
         />
         <Route path=":imdbID" element={<MovieDetails />} />

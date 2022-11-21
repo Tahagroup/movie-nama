@@ -15,4 +15,22 @@
   font-size: 20px;
   text-align: center;
   margin-right: 30px;
+  .again-btn {
+    margin-top: 20px;
+    border-radius: 5px;
+    color: #444;
+    border: none;
+    background-color: transparent;
+    border: 2px #444 solid;
+    padding: 10px 30px;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: color, background 0.3s ease;
+    &:hover {
+      background-color: #444;
+      color: white;
+    }
+  }
 }

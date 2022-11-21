@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router";
+import { useSearchParams } from "react-router-dom";
 interface SearchFormPropsType {
   searchChangeHandler: (text: string, type: string, year: string) => void;
 }
@@ -7,35 +7,38 @@ function SearchForm(props: SearchFormPropsType) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const typeRef = useRef<HTMLSelectElement | null>(null);
   const yearRef = useRef<HTMLInputElement | null>(null);
-  const navigate = useNavigate();
+  let [searchParams] = useSearchParams();
 
   function searchHandler(e: React.SyntheticEvent) {
     e.preventDefault();
-
-    navigate("/");
     const value = inputRef.current!.value.trim();
     const type = typeRef.current!.value.trim();
     const year = yearRef.current!.value.trim();
-
     if (!value) {
       return;
     }
+
     props.searchChangeHandler(value, type, year);
   }
 
   return (
     <section className="form-wrapper">
+      <header className="header">Movie Nama</header>
       <form className="search-form" onSubmit={searchHandler}>
         <input
-          className="form__input"
+          className="form__title"
           type={"text"}
           ref={inputRef}
-          defaultValue="batman"
+          defaultValue={searchParams.get("t")?.toString()}
           placeholder="Title"
         />
         {/* ////////////////////////////////////// */}
-        <div className="type-container">
-          <select className="type-selector" ref={typeRef}>
+        <div className="form__type">
+          <select
+            className="type-selector"
+            ref={typeRef}
+            defaultValue={searchParams.get("type")?.toString()}
+          >
             <option className="type-option" value="all">
               All
             </option>
@@ -49,12 +52,12 @@ function SearchForm(props: SearchFormPropsType) {
         </div>
         {/* ////////////////////////////////////// */}
         <input
-          className="form-year"
+          className="form__year "
           type={"number"}
           ref={yearRef}
           min="1850"
           max="2030"
-          defaultValue=""
+          defaultValue={searchParams.get("y")?.toString()}
           placeholder="Year"
         />
         {/* ////////////////////////////////////// */}

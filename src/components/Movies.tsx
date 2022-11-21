@@ -1,20 +1,27 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import MovieCard from "./MovieCard";
 import Error from "./utilities/Error";
 import Loading from "./utilities/Loading";
 interface MoviespropTypes {
   searchParams: searchParameters;
-  pageChangeHandler: (page: number) => void;
-  pageNumber: number;
+  // pageChangeHandler: (page: number) => void;
+  // pageNumber: number;
 }
 function Movies(props: MoviespropTypes) {
-  // const [pageNumber, setPageNumber] = useState(1);
+  let [searchParams, setSearchParams] = useSearchParams();
 
-  let URL_TO_FETCH = `https://www.omdbapi.com/?s=${props.searchParams.text}&y=${props.searchParams.year}&page=${props.pageNumber}&apikey=62f005b3`;
-  if (props.searchParams.type !== "all") {
-    URL_TO_FETCH = `https://www.omdbapi.com/?s=${props.searchParams.text}&type=${props.searchParams.type}&y=${props.searchParams.year}&page=${props.pageNumber}&apikey=62f005b3`;
-  }
+  const [title, type, year, page] = [
+    searchParams.get("t"),
+    searchParams.get("type"),
+    searchParams.get("y"),
+    searchParams.get("page"),
+  ];
+
+  let URL_TO_FETCH = `https://www.omdbapi.com/?s=${title}${
+    type && type !== "all" ? `&type=${type}` : ""
+  }&y=${year}&page=${page}&apikey=62f005b3`;
 
   const [data, error, isloading] = useFetch(URL_TO_FETCH) as [
     { Search: movieData[]; totalResults: string } | undefined,
@@ -24,15 +31,18 @@ function Movies(props: MoviespropTypes) {
 
   const numberOfPages = data ? Math.ceil(+data!.totalResults / 10) : null;
 
-  // console.log(data, error, isloading);
   function prevClickHandler() {
-    if (props.pageNumber !== 1) {
-      props.pageChangeHandler(props.pageNumber - 1);
+    if (+page! !== 1) {
+      // update searchParams and re-render with new data
+      searchParams.set("page", (+page! - 1).toString());
+      setSearchParams(searchParams);
     }
   }
   function nextClickHandler() {
-    if (props.pageNumber !== numberOfPages) {
-      props.pageChangeHandler(props.pageNumber + 1);
+    if (page !== numberOfPages) {
+      searchParams.set("page", (+page! + 1).toString());
+      setSearchParams(searchParams);
+      // setpageNumber(pageNumber! + 1);
     }
   }
   return (
@@ -59,17 +69,17 @@ function Movies(props: MoviespropTypes) {
           <button
             className="prev-btn"
             onClick={prevClickHandler}
-            disabled={props.pageNumber === 1}
+            disabled={+page! === 1}
           >
             Previous Page
           </button>
           <div className="pages">
-            ({props.pageNumber}/{numberOfPages})
+            ({+page!}/{numberOfPages})
           </div>
           <button
             className="next-btn"
             onClick={nextClickHandler}
-            disabled={props.pageNumber === numberOfPages}
+            disabled={+page! === numberOfPages}
           >
             Next Page
           </button>

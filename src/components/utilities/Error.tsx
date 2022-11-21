@@ -3,10 +3,26 @@ interface ErrorPropsType {
   error: Error;
 }
 function Error(props: ErrorPropsType) {
+  const errMessage =
+    props.error.message === "Failed to fetch" ? (
+      <div>
+        <div>There seems to be a problem with your internet connection.</div>
+        <button
+          className="again-btn"
+          onClick={() => {
+            document.location.reload();
+          }}
+        >
+          Try Again
+        </button>
+      </div>
+    ) : (
+      props.error.message
+    );
   return (
     <div className="error-container">
       <img src="./error.png" alt="Error!" className="error-pic" />
-      <div className="error-message">{props.error.message}</div>
+      <div className="error-message">{errMessage}</div>
     </div>
   );
 }

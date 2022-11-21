@@ -17,76 +17,113 @@
     align-items: center;
     margin: auto;
     margin-top: 20px;
+    max-width: 800px;
     .details-wrapper {
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      background-color: rgba(245, 245, 220, 0.7);
+      min-width: 600px;
       color: #444;
       z-index: 2;
-      display: flex;
-      justify-content: center;
-      // align-items: center;
-      background-color: rgba(245, 245, 220, 0.7);
-      padding: 24px;
-      min-width: 600px;
-      .movie-pic {
-        height: 100%;
-        width: auto;
-        border-radius: 10px;
-      }
-      .movie-info {
-        margin: 20px;
-        text-align: left;
-        .movie-title {
-          font-size: 20px;
-          color: darkblue;
-          max-width: 500px;
-          margin-bottom: 10px;
+      .details-summary {
+        display: flex;
+        justify-content: center;
+        padding: 24px;
+        border-bottom: 3px solid #444;
+
+        // align-items: center;
+        .movie-pic {
+          height: 100%;
+          width: auto;
+          border-radius: 10px;
         }
-        .director {
-          margin-bottom: 10px;
-        }
-        .genre {
-          margin-bottom: 10px;
-        }
-        .summary {
-          margin-bottom: 10px;
-          table,
-          th,
-          td {
-            border: 1px solid black;
-          }
-          th,
-          td {
-            padding: 5px;
-          }
-        }
-        .ratings {
-          margin-top: 30px;
-          .rate-item-wrapper {
+        .movie-info {
+          margin: 20px;
+          text-align: left;
+          .movie-title {
+            font-size: 20px;
+            color: darkblue;
+            max-width: 500px;
             margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between;
-            // .rate-item {
-            &:first-child {
-              // flex-direction: row-reverse;
-              .rate-source {
-                // visibility: hidden;
-                color: transparent;
-                line-height: 0;
-                &::after {
-                  margin-left: -75px;
-                  color: #444;
-                  line-height: initial;
-                  content: "IMDB";
-                  visibility: visible;
-                  background-color: orange;
-                  border-radius: 5px;
-                  padding: 2px 4px 2px 4px;
+          }
+          .director {
+            margin-bottom: 10px;
+          }
+          .genre {
+            margin-bottom: 10px;
+          }
+          .summary {
+            margin-bottom: 10px;
+            table,
+            th,
+            td {
+              border: 1px solid black;
+              text-align: center;
+            }
+            th,
+            td {
+              padding: 5px;
+            }
+          }
+          .ratings {
+            margin-top: 30px;
+            .rate-item-wrapper {
+              margin-bottom: 10px;
+              display: flex;
+              justify-content: space-between;
+              // .rate-item {
+              &:first-child {
+                // flex-direction: row-reverse;
+                .rate-source {
+                  visibility: hidden;
+                  color: transparent;
+                  line-height: 0;
+                  &::after {
+                    margin-left: -75px;
+                    color: #444;
+                    line-height: initial;
+                    content: "IMDB";
+                    visibility: visible;
+                    background-color: orange;
+                    border-radius: 5px;
+                    padding: 2px 4px 2px 4px;
+                  }
                 }
               }
+              // .rate-value {
+              //   margin-right: 200px;
+              // }
+              // }
             }
-            // .rate-value {
-            //   margin-right: 200px;
-            // }
-            // }
+          }
+        }
+      }
+      .details-plot {
+        padding: 24px;
+        text-align: left;
+        border-bottom: 3px solid #444;
+
+        &__title {
+          font-weight: bold;
+          font-size: 20px;
+          padding-bottom: 10px;
+        }
+        &__plot {
+        }
+      }
+      .details-castAndcrew {
+        display: flex;
+        flex-direction: column;
+        padding: 24px;
+        text-align: left;
+        .castAndcrew-item {
+          display: flex;
+          &__title {
+            color: #333;
+            font-weight: bold;
+          }
+          &__team {
           }
         }
       }
