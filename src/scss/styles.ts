@@ -7,5 +7,6 @@ import "./MoviePage.scss";
 import "./Movies.scss";
 import "./SearchForm.scss";
 import "./LandingPage.scss";
+import "./Page404.scss";
 
 // file is imported in App.tsx

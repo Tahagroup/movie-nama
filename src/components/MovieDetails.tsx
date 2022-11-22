@@ -26,7 +26,11 @@ function MovieDetails() {
       {loading ? (
         <Loading />
       ) : error ? (
-        <Error error={error} />
+        <>
+          <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />{" "}
+          <br /> <br /> <br />
+          <Error error={error} />
+        </>
       ) : (
         <div className="details-page">
           <img className="details-bg" src={detailsData.Poster} alt=""></img>

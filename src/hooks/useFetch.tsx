@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { concatMap, tap } from "rxjs";
 import { fromFetch } from "rxjs/fetch";
-// handle no internet in all pages
 // useQuery hook
 // change search form when going back
-// 404 page
 function useFetch(url: string) {
   const [data, setData] = useState<movieData[] | undefined>();
   const [error, setError] = useState<Error | undefined>(undefined);

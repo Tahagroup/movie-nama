@@ -1,0 +1,23 @@
+.page-404 {
+  margin: auto;
+  margin-top: 100px;
+  width: 400px;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 5px;
+  color: wheat;
+  button {
+    border: none;
+    margin-top: 20px;
+    background-color: wheat;
+    text-align: #444;
+    font-weight: bold;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    &:hover {
+      background-color: rgb(243, 205, 135);
+    }
+  }
+}

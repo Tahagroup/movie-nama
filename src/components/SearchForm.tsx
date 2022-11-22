@@ -29,7 +29,7 @@ function SearchForm(props: SearchFormPropsType) {
           className="form__title"
           type={"text"}
           ref={inputRef}
-          defaultValue={searchParams.get("t")?.toString()}
+          defaultValue={searchParams.get("t")?.toString() ?? "batman"}
           placeholder="Title"
         />
         {/* ////////////////////////////////////// */}

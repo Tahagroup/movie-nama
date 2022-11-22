@@ -13,15 +13,16 @@ function Movies(props: MoviespropTypes) {
   let [searchParams, setSearchParams] = useSearchParams();
 
   const [title, type, year, page] = [
-    searchParams.get("t"),
+    searchParams.get("t") || "batman",
     searchParams.get("type"),
     searchParams.get("y"),
-    searchParams.get("page"),
+    searchParams.get("page") || "1",
   ];
 
   let URL_TO_FETCH = `https://www.omdbapi.com/?s=${title}${
     type && type !== "all" ? `&type=${type}` : ""
   }&y=${year}&page=${page}&apikey=62f005b3`;
+  // console.log(URL_TO_FETCH);
 
   const [data, error, isloading] = useFetch(URL_TO_FETCH) as [
     { Search: movieData[]; totalResults: string } | undefined,
@@ -39,7 +40,7 @@ function Movies(props: MoviespropTypes) {
     }
   }
   function nextClickHandler() {
-    if (page !== numberOfPages) {
+    if (+page !== numberOfPages) {
       searchParams.set("page", (+page! + 1).toString());
       setSearchParams(searchParams);
       // setpageNumber(pageNumber! + 1);

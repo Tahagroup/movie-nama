@@ -8,6 +8,7 @@ import Movies from "./components/Movies";
 import SearchForm from "./components/SearchForm";
 import MovieDetails from "./components/MovieDetails";
 import LandingPage from "./components/LandingPage";
+import Page404 from "./components/utilities/Page404";
 
 function App() {
   const [searchParams, setSearchParams] = useState<searchParameters>({
@@ -34,22 +35,16 @@ function App() {
           element={<LandingPage searchChangeHandler={searchChangeHandler} />}
         />
         <Route
-          path="/search"
+          path="search"
           element={
             <>
-              <SearchForm
-                searchChangeHandler={searchChangeHandler}
-                // searchParams={searchParams}
-              />
-              <Movies
-                searchParams={searchParams}
-                // pageNumber={pageNumber}
-                // pageChangeHandler={pageChangeHandler}
-              />
+              <SearchForm searchChangeHandler={searchChangeHandler} />
+              <Movies searchParams={searchParams} />
             </>
           }
         />
         <Route path=":imdbID" element={<MovieDetails />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </div>
   );
