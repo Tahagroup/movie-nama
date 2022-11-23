@@ -35,7 +35,7 @@ function App() {
           element={<LandingPage searchChangeHandler={searchChangeHandler} />}
         />
         <Route
-          path="search"
+          path="/search"
           element={
             <>
               <SearchForm searchChangeHandler={searchChangeHandler} />
@@ -43,7 +43,7 @@ function App() {
             </>
           }
         />
-        <Route path=":imdbID" element={<MovieDetails />} />
+        <Route path="/:imdbID" element={<MovieDetails />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
     </div>

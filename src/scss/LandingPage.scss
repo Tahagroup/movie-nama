@@ -71,10 +71,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
+
       input {
         height: 42px;
         width: 230px;
         padding: 5px;
+        font-family: Inter, sans-serif;
         font-size: 20px;
       }
 
@@ -85,7 +87,7 @@
         color: white;
         background-color: #ff0000;
         padding: 0px 10px;
-
+        font-family: Inter, sans-serif;
         font-weight: bold;
         font-size: 17px;
         word-spacing: 5px;

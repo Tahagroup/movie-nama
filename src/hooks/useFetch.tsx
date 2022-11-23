@@ -3,6 +3,7 @@ import { concatMap, tap } from "rxjs";
 import { fromFetch } from "rxjs/fetch";
 // useQuery hook
 // change search form when going back
+// responsive
 function useFetch(url: string) {
   const [data, setData] = useState<movieData[] | undefined>();
   const [error, setError] = useState<Error | undefined>(undefined);
