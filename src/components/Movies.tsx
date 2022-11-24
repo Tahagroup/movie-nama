@@ -72,7 +72,7 @@ function Movies(props: MoviespropTypes) {
             onClick={prevClickHandler}
             disabled={+page! === 1}
           >
-            &#8592;
+            &lsaquo;
           </button>
           <div className="pages">
             ({+page!}/{numberOfPages})
@@ -82,7 +82,7 @@ function Movies(props: MoviespropTypes) {
             onClick={nextClickHandler}
             disabled={+page! === numberOfPages}
           >
-            &#8594;
+            &rsaquo;
           </button>
         </div>
       )}
