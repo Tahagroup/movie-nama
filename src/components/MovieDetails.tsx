@@ -21,6 +21,10 @@ function MovieDetails() {
             <span className="rate-value">{rating.Value}</span>
           </div>
         ));
+
+  function NA_Handler(data: string, fallback: string) {
+    return data === "N/A" ? fallback : data;
+  }
   return (
     <div>
       {loading ? (
@@ -41,12 +45,11 @@ function MovieDetails() {
                 <div className="movie-info">
                   <div className="movie-title">{detailsData.Title}</div>
                   <div className="director">
-                    Director:{" "}
-                    {detailsData.Director === "N/A"
-                      ? "-"
-                      : detailsData.Director}
+                    Director: {NA_Handler(detailsData.Director, "-")}
                   </div>
-                  <div className="genre">Genre: {detailsData.Genre}</div>
+                  <div className="genre">
+                    Genre: {NA_Handler(detailsData.Genre, "-")}
+                  </div>
                   <div className="summary">
                     <table>
                       <thead>
@@ -59,22 +62,22 @@ function MovieDetails() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>{detailsData.Country}</td>
-                          <td>{detailsData.Language}</td>
-                          <td>{detailsData.Rated}</td>
-                          <td>{detailsData.Runtime}</td>
+                          <td>{NA_Handler(detailsData.Country, "-")}</td>
+                          <td>{NA_Handler(detailsData.Language, "-")}</td>
+                          <td>{NA_Handler(detailsData.Rated, "-")}</td>
+                          <td>{NA_Handler(detailsData.Runtime, "-")}</td>
                         </tr>
                       </tbody>
                     </table>
-                    {/* {detailsData.Country} | {detailsData.Language} |{" "}
-                  {detailsData.Rated} | {detailsData.Runtime} */}
                   </div>
                   <div className="ratings">{rating}</div>
                 </div>
               </div>
               <div className="details-plot">
                 <div className="details-plot__title">Plot</div>
-                <div className="details-plot__plot">{detailsData.Plot}</div>
+                <div className="details-plot__plot">
+                  {NA_Handler(detailsData.Plot, "No plot provided")}
+                </div>
               </div>
               <div className="details-castAndcrew">
                 <div className="castAndcrew-item">
@@ -82,7 +85,7 @@ function MovieDetails() {
                     Actors:&nbsp;&nbsp; &nbsp;
                   </div>
                   <div className="castAndcrew-item__team">
-                    {detailsData.Actors}
+                    {NA_Handler(detailsData.Actors, "No actors provided")}
                   </div>
                 </div>
                 <div className="castAndcrew-item">
@@ -90,7 +93,7 @@ function MovieDetails() {
                     Writers: &nbsp;&nbsp;
                   </div>
                   <div className="castAndcrew-item__team">
-                    {detailsData.Writer}
+                    {NA_Handler(detailsData.Writer, "No writers provided")}
                   </div>
                 </div>
               </div>

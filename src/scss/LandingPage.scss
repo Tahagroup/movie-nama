@@ -1,3 +1,4 @@
+@import "mobile";
 .landing-page {
   background-image: url("../../public/landing-bg.jpg");
   height: 100vh;
@@ -22,6 +23,9 @@
     z-index: 2;
     color: white;
     margin: 30px;
+    @include mobile {
+      margin: 20px;
+    }
     .header {
       display: flex;
       justify-content: space-between;
@@ -36,12 +40,16 @@
         gap: 10px;
         justify-content: center;
         align-items: center;
-
-        background-color: red;
+        // background-color: red;
+        border: 2px red solid;
         color: white;
         border-radius: 5px;
         padding: 10px 15px;
         text-decoration: none;
+        @include mobile {
+          padding: 6px 12px;
+          justify-content: space-between;
+        }
         img {
           transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1);
         }
@@ -55,7 +63,9 @@
     }
     .slogan {
       margin-top: 180px;
-
+      @include mobile {
+        margin-top: 100px;
+      }
       &__main {
         font-size: 40px;
         font-weight: bold;
@@ -72,6 +82,9 @@
       justify-content: center;
       align-items: center;
 
+      @include mobile {
+        flex-direction: column;
+      }
       input {
         height: 42px;
         width: 230px;
@@ -93,6 +106,10 @@
         word-spacing: 5px;
         text-transform: uppercase;
         cursor: pointer;
+        @include mobile {
+          width: 243px;
+          margin-top: 10px;
+        }
         &:hover {
           background-color: rgb(207, 3, 3);
         }

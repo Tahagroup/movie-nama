@@ -1,3 +1,5 @@
+@import "mobile";
+
 .form-wrapper {
   display: flex;
   justify-content: space-between;
@@ -5,45 +7,75 @@
   padding: 20px 90px;
   background-color: #222;
 
+  @include mobile {
+    flex-direction: column;
+  }
   .header {
     color: #bbb;
     font-size: 30px;
     font-weight: bold;
+    padding-right: 10px;
   }
 
   .search-form {
     display: flex;
     justify-content: center;
-    align-items: center;
-    /* ////////// title ////////////////////  */
-
+    // align-items: center;
+    gap: 5px;
+    @include mobile {
+      flex-direction: column;
+    }
     .form__title {
       padding: 8px;
       font-size: 25px;
-      margin-right: 10px;
+      // margin-right: 10px;
       font-family: Inter;
       border-radius: 10px;
       background-color: #ddd;
-
-      &:focus {
-        outline: none;
-        background-color: #fff;
-      }
+      border: none;
       background-image: url("../../public/searchicon.svg");
       background-size: 30px;
       background-position: 10px 7px;
       background-repeat: no-repeat;
+
       padding-left: 50px;
+      @include mobile {
+        // width: 300px;
+        height: 30px;
+        margin-top: 5px;
+        font-size: 16px;
+        background-size: 25px;
+        background-position: 8px 10px;
+      }
+      &:focus {
+        outline: none;
+        background-color: #fff;
+      }
     }
     /* ////////// drop-down selector///////  */
+    .type-year-wrapper {
+      display: flex;
+      gap: 5px;
+      justify-content: space-between;
+      width: 100%;
+      border: none;
+
+      @include mobile {
+        gap: 0px;
+      }
+    }
     .form__type {
-      margin-right: 10px;
+      // margin-right: 10px;
       .type-selector {
         border-radius: 10px;
         background-color: #ddd;
         padding: 11.6px;
         font-size: 20px;
         font-family: Inter;
+        @include mobile {
+          margin-top: 5px;
+          font-size: 16px;
+        }
         &:focus {
           outline: none;
           background-color: #fff;
@@ -62,6 +94,9 @@
         .type-option {
           font-size: 20px;
           padding: 10px;
+          @include mobile {
+            font-size: 16px;
+          }
         }
       }
     }
@@ -70,15 +105,22 @@
       width: 100px;
       padding: 8px;
       font-size: 25px;
-      margin-right: 10px;
+      // margin-right: 10px;
       border-radius: 10px;
       background-color: #ddd;
+      font-family: Inter;
+      border: none;
+
+      @include mobile {
+        margin-top: 5px;
+        font-size: 16px;
+        width: 150px;
+      }
 
       &:focus {
         outline: none;
         background-color: #fff;
       }
-      font-family: Inter;
     }
     .form__searchbtn {
       /* margin: 30px 0; */
@@ -92,6 +134,12 @@
       cursor: pointer;
       font-family: Inter;
       font-size: 20px;
+      @include mobile {
+        width: 200px;
+        margin-top: 5px;
+        font-size: 16px;
+        width: 300px;
+      }
     }
     .form__searchbtn:hover {
       background-color: #444;

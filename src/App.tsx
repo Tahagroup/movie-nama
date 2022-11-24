@@ -10,7 +10,10 @@ import MovieDetails from "./components/MovieDetails";
 import LandingPage from "./components/LandingPage";
 import Page404 from "./components/utilities/Page404";
 
+
+
 function App() {
+
   const [searchParams, setSearchParams] = useState<searchParameters>({
     text: "batman",
     type: "all",

@@ -14,8 +14,8 @@ function Movies(props: MoviespropTypes) {
 
   const [title, type, year, page] = [
     searchParams.get("t") || "batman",
-    searchParams.get("type"),
-    searchParams.get("y"),
+    searchParams.get("type") || "all",
+    searchParams.get("y") || "",
     searchParams.get("page") || "1",
   ];
 
@@ -72,7 +72,7 @@ function Movies(props: MoviespropTypes) {
             onClick={prevClickHandler}
             disabled={+page! === 1}
           >
-            Previous Page
+            &#8592;
           </button>
           <div className="pages">
             ({+page!}/{numberOfPages})
@@ -82,7 +82,7 @@ function Movies(props: MoviespropTypes) {
             onClick={nextClickHandler}
             disabled={+page! === numberOfPages}
           >
-            Next Page
+            &#8594;
           </button>
         </div>
       )}

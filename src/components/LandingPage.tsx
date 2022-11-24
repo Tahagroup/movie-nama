@@ -7,7 +7,7 @@ function LandingPage(props: LandingPagePropTypes) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();
   const [hasError, setHasError] = useState(false);
-  function searchClickHandler(e: React.SyntheticEvent) {
+  function searchClickHandler() {
     const value = inputRef.current!.value.trim();
     if (!value) {
       setHasError(true);
@@ -38,6 +38,12 @@ function LandingPage(props: LandingPagePropTypes) {
             ref={inputRef}
             type="text"
             placeholder={hasError ? "Type Something." : "Enter Title"}
+            onKeyDown={(event: React.KeyboardEvent<HTMLElement>) => {
+              if (event.key === "Enter") {
+                event.preventDefault();
+                searchClickHandler();
+              }
+            }}
           />
           <button onClick={searchClickHandler}>Start Browsing &rsaquo;</button>
         </div>

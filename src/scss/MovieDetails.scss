@@ -1,3 +1,4 @@
+@import "mobile";
 .details-page {
   // position: relative;
 
@@ -17,7 +18,12 @@
     align-items: center;
     margin: auto;
     margin-top: 20px;
+    margin-bottom: 20px;
     max-width: 800px;
+    @include mobile {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
     .details-wrapper {
       border-radius: 5px;
       display: flex;
@@ -26,17 +32,29 @@
       min-width: 600px;
       color: #444;
       z-index: 2;
+      @include mobile {
+        min-width: unset;
+        border-radius: 0;
+      }
       .details-summary {
         display: flex;
         justify-content: center;
         padding: 24px;
         border-bottom: 3px solid #444;
-
+        @include mobile {
+          flex-direction: column;
+          // padding: 10px;
+        }
         // align-items: center;
         .movie-pic {
           height: 100%;
           width: auto;
           border-radius: 10px;
+          @include mobile {
+            width: 100%;
+            width: 80%;
+            margin: auto;
+          }
         }
         .movie-info {
           margin: 20px;
@@ -55,6 +73,10 @@
           }
           .summary {
             margin-bottom: 10px;
+            @include mobile {
+              font-size: 10px;
+            }
+
             table,
             th,
             td {
@@ -117,13 +139,22 @@
         flex-direction: column;
         padding: 24px;
         text-align: left;
+        @include mobile {
+          gap: 10px;
+        }
         .castAndcrew-item {
           display: flex;
+          @include mobile {
+            gap: 10px;
+          }
           &__title {
             color: #333;
             font-weight: bold;
           }
           &__team {
+            @include mobile {
+              font-size: 14px;
+            }
           }
         }
       }
