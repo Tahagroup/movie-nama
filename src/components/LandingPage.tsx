@@ -1,11 +1,9 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router";
 interface LandingPagePropTypes {
   searchChangeHandler: (text: string, type: string, year: string) => void;
 }
 function LandingPage(props: LandingPagePropTypes) {
   const inputRef = useRef<HTMLInputElement | null>(null);
-  const navigate = useNavigate();
   const [hasError, setHasError] = useState(false);
   function searchClickHandler() {
     const value = inputRef.current!.value.trim();
@@ -13,7 +11,7 @@ function LandingPage(props: LandingPagePropTypes) {
       setHasError(true);
       return;
     }
-    navigate("/search");
+    // navigate("/search");
     props.searchChangeHandler(value, "all", "");
   }
   return (

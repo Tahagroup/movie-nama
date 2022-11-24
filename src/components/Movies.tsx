@@ -6,8 +6,6 @@ import Error from "./utilities/Error";
 import Loading from "./utilities/Loading";
 interface MoviespropTypes {
   searchParams: searchParameters;
-  // pageChangeHandler: (page: number) => void;
-  // pageNumber: number;
 }
 function Movies(props: MoviespropTypes) {
   let [searchParams, setSearchParams] = useSearchParams();
@@ -18,6 +16,7 @@ function Movies(props: MoviespropTypes) {
     searchParams.get("y") || "",
     searchParams.get("page") || "1",
   ];
+  console.log([title, type, year, page]);
 
   let URL_TO_FETCH = `https://www.omdbapi.com/?s=${title}${
     type && type !== "all" ? `&type=${type}` : ""
