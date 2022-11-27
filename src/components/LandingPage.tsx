@@ -25,8 +25,8 @@ function LandingPage(props: LandingPagePropTypes) {
           </a>
         </div>
         <div className="slogan">
-          <div className="slogan__main">Search for movies and series,</div>
-          <div className="slogan__main">Fast and Easy.</div>
+          <span className="slogan__main">Search for movies and series,</span>
+          <div className="slogan__main">Fast and Convenient.</div>
           <div className="slogan__sub">
             Search Details To Find Your Favorites 😍
           </div>

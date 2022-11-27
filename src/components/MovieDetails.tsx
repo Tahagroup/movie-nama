@@ -1,9 +1,15 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Error from "./utilities/Error";
 import Loading from "./utilities/Loading";
 function MovieDetails() {
   const { imdbID } = useParams();
+
+  const navigate = useNavigate();
+  if (!imdbID?.startsWith("tt")) {
+    navigate("/PageNotFound");
+  }
+
   const [detailsData, error, loading] = useFetch(
     `https://www.omdbapi.com/?i=${imdbID}&apikey=62f005b3`
   ) as [any, Error, boolean];

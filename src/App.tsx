@@ -45,6 +45,7 @@ function App() {
         />
         <Route path="/:imdbID" element={<MovieDetails />} />
         <Route path="*" element={<Page404 />} />
+        <Route path="/PageNotFound" element={<Page404 />} />
       </Routes>
     </div>
   );

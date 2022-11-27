@@ -10,11 +10,14 @@
   @include mobile {
     flex-direction: column;
   }
-  .header {
-    color: #bbb;
-    font-size: 30px;
-    font-weight: bold;
+  .logo {
+    height: 50px;
     padding-right: 10px;
+    @include mobile {
+      padding-right: 0px;
+      height: 45px;
+      margin-bottom: 16px;
+    }
   }
 
   .search-form {
@@ -82,15 +85,6 @@
           border-bottom-left-radius: 0px;
           border-bottom-right-radius: 0px;
         }
-        // option:checked {
-        //   background-color: #333;
-        //   color: white;
-        // }
-        // option:hover {
-        //   color: red;
-        //   box-shadow: 0 0 10px 100px #aaa inset;
-        // }
-
         .type-option {
           font-size: 20px;
           padding: 10px;
@@ -114,7 +108,8 @@
       @include mobile {
         margin-top: 5px;
         font-size: 16px;
-        width: 150px;
+        width: 100%;
+        margin-left: 5px;
       }
 
       &:focus {

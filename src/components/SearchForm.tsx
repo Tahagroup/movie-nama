@@ -42,7 +42,7 @@ function SearchForm(props: SearchFormPropsType) {
 
   return (
     <section className="form-wrapper">
-      <header className="header">Movie Nama</header>
+      <img className="logo" src="./logo.png" alt="logo" />
       <form className="search-form" onSubmit={searchHandler}>
         <input
           className="form__title"
