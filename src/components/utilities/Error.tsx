@@ -28,11 +28,3 @@ function Error(props: ErrorPropsType) {
 }
 
 export default Error;
-
-// function ErrorSnackbar() {
-//   return (
-//     <div className={`snackbar-container ${"props.isShown " ? "active" : ""}`}>
-//       <div className="error-message">This is an error massage</div>
-//     </div>
-//   );
-// }

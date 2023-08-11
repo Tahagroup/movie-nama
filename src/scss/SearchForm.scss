@@ -6,7 +6,6 @@
   align-items: center;
   padding: 20px 90px;
   background-color: #222;
-
   @include mobile {
     flex-direction: column;
   }
@@ -23,30 +22,34 @@
   .search-form {
     display: flex;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     gap: 5px;
     @include mobile {
       flex-direction: column;
+      margin: 10px;
+      // width: 100vw;
     }
     .form__title {
-      padding: 8px;
-      font-size: 25px;
-      // margin-right: 10px;
       font-family: Inter;
       border-radius: 10px;
       background-color: #ddd;
       border: none;
+      font-size: 25px;
+      padding: 8px;
+      height: 34px;
+
+      // search icon SVG:
       background-image: url("../../public/searchicon.svg");
       background-size: 30px;
       background-position: 10px 7px;
       background-repeat: no-repeat;
-
       padding-left: 50px;
+
       @include mobile {
-        // width: 300px;
-        height: 30px;
         margin-top: 5px;
         font-size: 16px;
+        height: 30px;
+        // search icon SVG:
         background-size: 25px;
         background-position: 8px 10px;
       }
@@ -62,13 +65,11 @@
       justify-content: space-between;
       width: 100%;
       border: none;
-
       @include mobile {
         gap: 0px;
       }
     }
     .form__type {
-      // margin-right: 10px;
       .type-selector {
         border-radius: 10px;
         background-color: #ddd;
@@ -96,7 +97,6 @@
     }
     /* /////////////// year ////////////// */
     .form__year {
-      width: 100px;
       padding: 8px;
       font-size: 25px;
       // margin-right: 10px;
@@ -119,12 +119,11 @@
     }
     .form__searchbtn {
       /* margin: 30px 0; */
+      // width: 100%;
       background-color: #555;
       border: none;
       color: beige;
-      padding: 14px;
-      padding-left: 30px;
-      padding-right: 30px;
+      padding: 14px 30px 14px 30px;
       border-radius: 10px;
       cursor: pointer;
       font-family: Inter;

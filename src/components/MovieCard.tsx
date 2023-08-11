@@ -9,7 +9,7 @@ function MovieCard(props: MovieCardTypes) {
     props.movieData!.Poster === "N/A"
       ? "./no-image.jpg"
       : props.movieData!.Poster;
-  // there is a – at end of some series:
+  // there is a "–" at end of some series:
   const year =
     props.movieData!.Year.slice(-1) === "–"
       ? props.movieData!.Year.slice(0, -1)

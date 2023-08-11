@@ -21,7 +21,6 @@ function Movies(props: MoviespropTypes) {
   let URL_TO_FETCH = `https://www.omdbapi.com/?s=${title}${
     type && type !== "all" ? `&type=${type}` : ""
   }&y=${year}&page=${page}&apikey=62f005b3`;
-  // console.log(URL_TO_FETCH);
 
   const [data, error, isloading] = useFetch(URL_TO_FETCH) as [
     { Search: movieData[]; totalResults: string } | undefined,

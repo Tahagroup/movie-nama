@@ -27,7 +27,7 @@ function SearchForm(props: SearchFormPropsType) {
         ? ""
         : searchParams.get("y")!.toString();
   }
-  //
+  
   function searchHandler(e: React.SyntheticEvent) {
     e.preventDefault();
     const value = inputRef.current!.value.trim();
@@ -51,7 +51,6 @@ function SearchForm(props: SearchFormPropsType) {
           defaultValue={searchParams.get("t")?.toString() ?? "batman"}
           placeholder="Title"
         />
-        {/* ////////////////////////////////////// */}
         <div className="type-year-wrapper">
           <div className="form__type">
             <select
@@ -70,7 +69,6 @@ function SearchForm(props: SearchFormPropsType) {
               </option>
             </select>
           </div>
-          {/* ////////////////////////////////////// */}
           <input
             className="form__year "
             type={"number"}
@@ -81,7 +79,6 @@ function SearchForm(props: SearchFormPropsType) {
             placeholder="Year"
           />
         </div>
-        {/* ////////////////////////////////////// */}
         <button type="submit" className="form__searchbtn">
           Search
         </button>

@@ -52,7 +52,7 @@
           border-radius: 10px;
           @include mobile {
             width: 100%;
-            width: 80%;
+            width: 90%;
             margin: auto;
           }
         }
@@ -69,14 +69,22 @@
             margin-bottom: 10px;
           }
           .genre {
-            margin-bottom: 10px;
+            margin-bottom: 30px;
           }
           .summary {
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             @include mobile {
-              font-size: 10px;
+              font-size: 14px;
             }
-
+            tr,
+            thead,
+            tbody,
+            table {
+              width: 100%;
+            }
             table,
             th,
             td {
@@ -86,6 +94,7 @@
             th,
             td {
               padding: 5px;
+              width: 25%;
             }
           }
           .ratings {
@@ -94,9 +103,7 @@
               margin-bottom: 10px;
               display: flex;
               justify-content: space-between;
-              // .rate-item {
               &:first-child {
-                // flex-direction: row-reverse;
                 .rate-source {
                   visibility: hidden;
                   color: transparent;
@@ -113,10 +120,6 @@
                   }
                 }
               }
-              // .rate-value {
-              //   margin-right: 200px;
-              // }
-              // }
             }
           }
         }

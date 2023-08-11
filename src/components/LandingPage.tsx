@@ -11,7 +11,6 @@ function LandingPage(props: LandingPagePropTypes) {
       setHasError(true);
       return;
     }
-    // navigate("/search");
     props.searchChangeHandler(value, "all", "");
   }
   return (
@@ -45,7 +44,6 @@ function LandingPage(props: LandingPagePropTypes) {
           />
           <button onClick={searchClickHandler}>Start Browsing &rsaquo;</button>
         </div>
-        {/* {hasError && <span className="error">Type something!</span>} */}
       </div>
     </div>
   );
