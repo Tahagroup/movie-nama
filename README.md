@@ -1,8 +1,8 @@
 # MovieNama
 ### MovieNama is a movie search app(with filters on date and type)
 #### Search for movies and series, Fast and Convenient.
-<br/>
-[Live Demo](https://image-compressor.iran.liara.run/)
+
+[Live Demo](https://movienama.netlify.app/)
 
 ### Here's how it looks:
 
